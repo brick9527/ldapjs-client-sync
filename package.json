@@ -1,5 +1,35 @@
 {
+  "name": "ldapjs-client-sync",
+  "version": "0.1.0",
+  "description": "a collection of sync client API based on ldapjs",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node_modules/.bin/eslint libs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brick9527/ldapjs-client-sync.git"
+  },
+  "keywords": [
+    "openLDAP",
+    "ldapjs",
+    "sync",
+    "client"
+  ],
+  "author": "brick9527 <214333890@qq.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brick9527/ldapjs-client-sync/issues"
+  },
+  "homepage": "https://github.com/brick9527/ldapjs-client-sync#readme",
   "dependencies": {
     "ldapjs": "^2.2.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.24.0"
   }
 }

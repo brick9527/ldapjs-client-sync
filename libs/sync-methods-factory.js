@@ -12,4 +12,4 @@ module.exports = function(client, funcName, ...params) {
       return resolve(client);
     });
   });
-}
+};

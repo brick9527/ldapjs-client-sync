@@ -24,7 +24,7 @@ class LDAP {
 
       this.client = client;
 
-      bindFunc(this, ['bindSync', 'addSync', 'delSync', 'modifySync', 'modifyDNSync', 'searchSync', 'starttlsSync', 'unbindSync'])
+      bindFunc(this, ['bindSync', 'addSync', 'delSync', 'modifySync', 'modifyDNSync', 'searchSync', 'starttlsSync', 'unbindSync']);
 
       return resolve(this.client);
     });
@@ -72,7 +72,7 @@ class LDAP {
    * @returns 
    */
   modifyDNSync(...params) {
-    return syncMethodsFactory(this.client, 'modifyDN', ...params, ldapChange);
+    return syncMethodsFactory(this.client, 'modifyDN', ...params);
   }
 
   /**
@@ -127,7 +127,7 @@ class LDAP {
         }
 
         return resolve(true);
-      })
+      });
     });
   }
 }
