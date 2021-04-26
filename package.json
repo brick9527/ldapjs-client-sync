@@ -1,6 +1,6 @@
 {
   "name": "ldapjs-client-sync",
-  "version": "0.1.0",
+  "version": "0.1.0-rc1",
   "description": "a collection of sync client API based on ldapjs",
   "main": "index.js",
   "directories": {
