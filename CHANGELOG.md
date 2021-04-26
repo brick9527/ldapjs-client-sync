@@ -15,3 +15,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 添加`eslint规范`
 - 添加`CHANGELOG`
 - 添加`README`
+- 添加同步`seachPaging`,`exop`方法

@@ -76,6 +76,60 @@ class LDAP {
   }
 
   /**
+   * exopSync
+   * @param  {...any} params - exop()方法参数
+   * @returns 
+   */
+  exopSync(...params) {
+    return new Promise((resolve, reject) => {
+      this.client.exop(...params, (err, value, res) => {
+        checkClient(this.client);
+
+        if (err) {
+          return reject(err);
+        }
+
+        return resolve(value);
+      });
+    });
+  }
+
+  /**
+   * search-paging
+   * @param  {...any} params - search(paging)方法参数
+   * @returns 
+   */
+  searchPagingSync(...params) {
+    return new Promise((resolve, reject) => {
+      checkClient(this.client);
+      
+      this.client.search(...params, (err, res) => {
+        if (err) {
+          return reject(err);
+        }
+        
+        let entries = [];
+        res.on('searchEntry', (entry) => {
+          entries.push(entry);
+        });
+
+        res.on('page', (result) => {
+          return resolve({ status: 'PageEnd', entries, result });
+        });
+
+        res.on('error', (err) => {
+          return reject(err);
+        });
+
+        res.on('end', (result) => {
+          const objects = entries.map(item => item.object);
+          return resolve({ status: 'end', result, entries, objects });
+        });
+      });
+    });
+  }
+
+  /**
    * search
    * @param  {...any} params - search()方法参数
    * @returns 
@@ -85,6 +139,10 @@ class LDAP {
       checkClient(this.client);
 
       this.client.search(...params, (err, res) => {
+        if (err) {
+          return reject(err);
+        }
+
         let entries = [];
         res.on('searchEntry', (entry) => {
           entries.push(entry);
